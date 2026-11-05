@@ -1,5 +1,7 @@
 # Final Structure
 
+> **AI agents and contributors:** start with [`AGENTS.md`](AGENTS.md). It holds the working rules, including commit standards. This file is the architecture spec.
+
 ```
 main.go
 /cmd
@@ -13,11 +15,11 @@ main.go
 > **Naming note:** the foundation utility package is named `lib` throughout (your diagram and tree use `lib`; some earlier prose called it `pkg` — treat `lib` as canonical). There is **no top-level `/service`**: services are an internal layer of each module under `/module`. See the *Decisions & deviations* section at the end for the reasoning.
 > 
 
-> **Shared library note:** the company toolkit `github.com/moeghifar/libgo` is an **external dependency**, imported as `github.com/moeghifar/libgo/pkg/<tool>` (e.g. `.../pkg/envy`, `.../pkg/climd`). Do not confuse libgo's internal `pkg/` layout with this app's internal `lib` package — `lib` is where the app initializes and, where useful, thinly wraps libgo so call-sites stay stable if a tool's signature changes.
+> **Shared library note:** the company toolkit `github.com/moeghifar/libgo` is an **external dependency**, imported as `github.com/moeghifar/libgo/pkg/<tool>` (`.../pkg/envy`, `.../pkg/climd`, `.../pkg/xttp`, `.../pkg/foreverwork`). Do not confuse libgo's internal `pkg/` layout with this app's internal `lib` package — `lib` is where the app initializes and, where useful, thinly wraps libgo so call-sites stay stable if a tool's signature changes.
 > 
 
 ```
-require github.com/moeghifar/libgo latest
+require github.com/moeghifar/libgo v0.2.0
 ```
 
 ---

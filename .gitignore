@@ -1,0 +1,8 @@
+# Local plans and discussions (see AGENTS.md)
+.specify/
+
+# Local configuration
+.env
+.env.*
+!.env.example
+.claude/settings.local.json
