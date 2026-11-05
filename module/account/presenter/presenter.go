@@ -25,5 +25,9 @@ func Init(ctx context.Context, conf config.Config, ucs usecase.Usecases, enable 
 		slog.InfoContext(ctx, "consumer presenter enabled", "app", conf.App.Name)
 	}
 
+	if enable.HTTP {
+		return startHTTP(ctx, conf, ucs)
+	}
+
 	return nil
 }
