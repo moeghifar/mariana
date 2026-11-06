@@ -28,10 +28,18 @@ func startHTTP(ctx context.Context, conf config.Config, ucs usecase.Usecases) er
 	return newAPI(conf, ucs).Run(ctx, fmt.Sprintf(":%d", conf.App.Port))
 }
 
+func mapError(err error) error {
+	if errors.Is(err, entity.ErrUserNotFound) {
+		return errUserNotFound.With("no user with this id", err)
+	}
+	return err
+}
+
 func newAPI(conf config.Config, ucs usecase.Usecases) *xttp.API {
 	api := xttp.New(xttp.Config{
 		Info:          xttp.Info{Title: conf.App.Name, Version: conf.AppVersion},
 		DefaultErrors: []int{fiber.StatusInternalServerError},
+		MapError:      mapError,
 	})
 
 	api.Group("/v1").Add(xttp.Route{
@@ -51,9 +59,6 @@ func newAPI(conf config.Config, ucs usecase.Usecases) *xttp.API {
 			}
 
 			u, err := ucs.MyUsecase.GetByID(c.Context(), id)
-			if errors.Is(err, entity.ErrUserNotFound) {
-				return errUserNotFound.With("no user with this id", err)
-			}
 			if err != nil {
 				return err
 			}

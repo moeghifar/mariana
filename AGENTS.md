@@ -15,7 +15,7 @@ A Go modular monolith (module `github.com/moeghifar/mariana`). Each `module/<con
 self-contained bounded context. The `github.com/moeghifar/libgo` toolkit is an external
 dependency; persistence uses bun on PostgreSQL.
 
-Go **1.27.2** minimum (`go.mod`). Never lower it.
+Go **1.27.3** minimum (`go.mod`). Never lower it.
 
 ```
 main.go → cmd/ (serve, migration, cli)
@@ -46,7 +46,7 @@ Use these first. Ask before adding an alternative.
 | Config and env | `github.com/moeghifar/libgo/pkg/envy` |
 | CLI commands | `github.com/moeghifar/libgo/pkg/climd` |
 | HTTP server and routes | `github.com/moeghifar/libgo/pkg/xttp`: one `xttp.Route` per endpoint, in the `presenter` layer |
-| API errors | `xttp.Error`, defined once per error. Causes go in `Err`, never in `Detail` |
+| API errors | `xttp.Error`, defined once per error. Causes go in `Err`, never in `Detail`. Map domain errors in `Config.MapError` |
 | Background jobs and tickers | `github.com/moeghifar/libgo/pkg/foreverwork`, once a real job exists |
 | Logging | Standard `log/slog`, set up in `lib` |
 | Database | `github.com/uptrace/bun`, in the `repository` layer and `infra` |
