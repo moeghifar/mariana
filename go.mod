@@ -4,7 +4,7 @@ go 1.27.3
 
 require (
 	github.com/gofiber/fiber/v3 v3.6.1
-	github.com/moeghifar/libgo v0.3.0
+	github.com/moeghifar/libgo v0.4.0
 	github.com/uptrace/bun v1.2.18
 	github.com/uptrace/bun/dialect/pgdialect v1.2.18
 	github.com/uptrace/bun/driver/pgdriver v1.2.18
