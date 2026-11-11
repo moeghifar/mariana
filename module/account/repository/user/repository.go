@@ -2,6 +2,8 @@ package user
 
 import (
 	"context"
+	"database/sql"
+	"errors"
 	"fmt"
 
 	"github.com/moeghifar/mariana/infra"
@@ -23,6 +25,9 @@ func (r *Repository) GetByID(ctx context.Context, id int64) (entity.User, error)
 		Model(&model).
 		Where("id = ?", id).
 		Scan(ctx); err != nil {
+		if errors.Is(err, sql.ErrNoRows) {
+			return entity.User{}, entity.ErrUserNotFound
+		}
 		return entity.User{}, fmt.Errorf("select user: %w", err)
 	}
 	return model.ToEntity(), nil
