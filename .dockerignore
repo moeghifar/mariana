@@ -1,0 +1,13 @@
+# Allowlist: secrets and local files never reach the build context.
+*
+!go.mod
+!go.sum
+!main.go
+!cmd
+!config
+!infra
+!lib
+!migrations
+!module
+**/.env*
+**/*_test.go

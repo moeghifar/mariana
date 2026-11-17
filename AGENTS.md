@@ -15,7 +15,7 @@ A Go modular monolith (module `github.com/moeghifar/mariana`). Each `module/<con
 self-contained bounded context. The `github.com/moeghifar/libgo` toolkit is an external
 dependency; persistence uses bun on PostgreSQL.
 
-Go **1.27.3** minimum (`go.mod`). Never lower it.
+Go **1.27.4** minimum (`go.mod`). Never lower it.
 
 ```
 main.go → cmd/ (serve, migration, cli)
