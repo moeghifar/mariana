@@ -12,7 +12,7 @@ ARG APP_VERSION=dev
 RUN CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags="-s -w -X main.AppVersion=${APP_VERSION}" -o /app .
 
 # --- Runtime: no shell, no package manager, only the static binary ---
-FROM cgr.dev/chainguard/static:latest@sha256:fc42af33e643f20d08baf03cddcc1c02ba57052dfb02edb0d79f3fc47bcea8d9
+FROM cgr.dev/chainguard/static:latest@sha256:54b5f14edad6f2554774d499539e837588a501bd5bf22ac6cd97b1068c35d44d
 
 COPY --from=builder /app /app
 
