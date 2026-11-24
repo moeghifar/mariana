@@ -1,6 +1,6 @@
 # Hardened image for mariana. Build: docker build --build-arg APP_VERSION=$(git describe --tags --always) -t mariana .
 # Base images are pinned by digest; bump them deliberately.
-FROM cgr.dev/chainguard/go:latest@sha256:504c1ccea69dc70518825cdb5970c4ed1940ce9927106ece59478e2c1fd98a31 AS builder
+FROM cgr.dev/chainguard/go:latest@sha256:b42c64f7559093cf20910fc6fe750884dd55c74057a16cbeedbba42c4f9b31f8 AS builder
 
 WORKDIR /workdir
 
